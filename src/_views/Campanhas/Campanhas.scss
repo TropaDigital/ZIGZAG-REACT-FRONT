@@ -1,0 +1,40 @@
+/* ACCORDION */
+.accordion{
+    .item{
+        border-bottom: 1px solid #e6ecf0;
+        > .title{
+            display: block;
+            cursor: pointer;
+            margin: 0;
+            line-height: 45px;
+            &:after{
+                font-size: 24px;
+                font-weight: bold;
+                float: right;
+                content: "+";
+            }
+        }
+        > .content{
+            box-sizing: border-box;
+            background-color: #e6ecf0;
+            
+            transition: height .2s;
+            visibility: hidden;
+            padding: 0;
+            height: 0;
+            
+        }
+        &.active{
+            > .title{
+                &:after{
+                    content: "-";
+                }
+            }
+            > .content{
+                visibility: visible;
+                padding: 10px;
+                height: 70px;
+            }
+        }
+    }
+}

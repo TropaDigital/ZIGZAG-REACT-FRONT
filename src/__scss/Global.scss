@@ -1,0 +1,78 @@
+@import './Mixin.scss';
+
+/* GRID */
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .col{
+    }
+}
+
+/* titles */
+h1,h2,h3,h4,h5,h6{
+    &.category{
+        font-size: 30px;
+        color: $color_blue_white;
+    }
+}
+
+/* BTNS */
+.btn {
+    min-width: 100px;
+    height: 24px;
+    position: relative;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 5px 0px;
+    background-color: $color_yellow;
+    color: $color_text;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0px 3px 10px rgba($color: #000000, $alpha: .1);
+    }
+    &:active {
+        background-color: #e4bc47;
+    }
+}
+
+/* FILTROS */
+.filter {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    label {
+        height: 22px;
+
+        input, select {
+            font-size: 12px;
+            padding-left: 4px;
+            height: 22px;
+            color: $color_text;
+            float: left;
+            box-sizing: border-box;
+            background-color: #e6ecf0;
+        }
+    }
+
+    .date {
+        position: relative;
+        input{
+            padding-left: 18px;
+        }
+        i {
+            width: 10px;
+            height: 11px;
+            position: absolute;
+            z-index: 5;
+            left: 4px;
+            top: 6px;
+            background-image: url(../__images/icos/icon_calendar.png);
+        }
+    }
+}
