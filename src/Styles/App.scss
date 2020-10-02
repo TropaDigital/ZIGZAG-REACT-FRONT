@@ -55,7 +55,7 @@ header {
             button  {
                 width: 23px;
                 height: 24px;
-                background-image: url(../__images/icos/icon_notification.png);
+                background-image: url(../Images/icos/icon_notification.png);
                 background-color: #FFF;
                 position: relative;
                 cursor: pointer;
@@ -88,7 +88,7 @@ header {
                 &:after {
                     width: 7px;
                     height: 5px;
-                    background-image: url(../__images/icos/icon_arrow_down.png);
+                    background-image: url(../Images/icos/icon_arrow_down.png);
                     margin-left: 10px;
                     content: '';
                 }

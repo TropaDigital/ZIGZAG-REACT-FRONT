@@ -2,25 +2,20 @@
 import { BrowserRouter as Router, Switch, Route, useLocation, Redirect } from 'react-router-dom'
 
 //views
-import Dashboard from './_views/Dashboard/Dashboard'
-import Login from './_views/Login/Login'
+import Dashboard from './Pages/Dashboard/Dashboard'
+import Login from './Pages/Login/Login'
+import Templates from './Pages/Templates/Templates'
+
+import Campanhas from './Pages/Campanhas/Campanhas'
+
+import NovaCampanha1 from './Pages/NovaCampanha/Step1'
+import NovaCampanha2 from './Pages/NovaCampanha/Step2'
+import NovaCampanha3 from './Pages/NovaCampanha/Step3'
+import NovaCampanha4 from './Pages/NovaCampanha/Step4'
+import NovaCampanha5 from './Pages/NovaCampanha/Step5'
 
 //components
-import LayoutPrivate from './_components/Layout/LayoutPrivate'
-
-const NovaCampanha = () => (
-  <div className="page">
-    <h1>Nova campanha</h1>
-  </div>
-)
-
-const Campanhas = () => (
-  <div className="page"><h1>Campanhas</h1></div>
-)
-
-const Templates = () => (
-  <div className="page"><h1>Templates</h1></div>
-)
+import LayoutPrivate from './Components/Layout/LayoutPrivate'
 
 const Analytics = () => (
   <div className="page"><h1>Analytics</h1></div>
@@ -101,7 +96,19 @@ export default function Routes() {
             </PrivateRoute>
 
             <PrivateRoute exact path="/nova-campanha">
-              <Route component={NovaCampanha}/>
+              <Route component={NovaCampanha1}/>
+            </PrivateRoute>
+            <PrivateRoute exact path="/nova-campanha/step2">
+              <Route component={NovaCampanha2}/>
+            </PrivateRoute>
+            <PrivateRoute exact path="/nova-campanha/step3">
+              <Route component={NovaCampanha3}/>
+            </PrivateRoute>
+            <PrivateRoute exact path="/nova-campanha/step4">
+              <Route component={NovaCampanha4}/>
+            </PrivateRoute>
+            <PrivateRoute exact path="/nova-campanha/step5">
+              <Route component={NovaCampanha5}/>
             </PrivateRoute>
 
             <PrivateRoute exact path="/campanhas">

@@ -1,0 +1,111 @@
+@import '../../Styles/Mixin.scss';
+
+#templates {
+ 
+    #creation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 28px 0px;
+        .widgets {
+            width: 300px;
+            min-height: 100%;
+            background-color: #EAEAEA;
+            border-radius: 6px;
+            overflow: hidden;
+            .head {
+                background-color: $color_blue;
+                padding: 8px 11px;
+                box-sizing: border-box;
+                color: #FFF;
+            }
+            .sections {
+                box-sizing: border-box;
+                .section {
+                    padding: 8px;
+                    margin: 0px 0px 0px 0px;
+                    width: 100%;
+                    float: left;
+                    box-sizing: border-box;
+                    p {
+                        padding: 10px 5px 5px 5px;
+                    }
+                    .item {
+                        float: left;
+                        width: calc(33.3% - 10px);
+                        height: 84px;
+                        border-radius: 4px;
+                        margin: 5px;
+                        background-color: #FFF;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-end;
+                        align-items: center;
+                        padding: 6px;
+                        box-sizing: border-box;
+                        cursor: move;
+                        i {
+
+                        }
+                        span {
+                            font-size:12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .creation-layout {
+            width: 400px;
+            height: 700px;
+            background: #333;
+            border-radius: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            margin: 0px 20px;
+            > div {
+                width: 100%;
+                height: 100%;
+                background-color: #FFF;
+                border-radius: 0px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                .item-renderized {
+
+                    &.edit {
+                        border:1px solid red;
+                    }
+                    .columns {
+                        display: flex;
+                        flex-direction: row;
+                        .item-column {
+                            width: 100%;
+                            min-height: 85px;
+                            background-color: #CCC;
+                            > div {
+                                height: 100%;
+                                .item {
+                       
+                                }
+                            }
+                        }
+                    }
+                }
+                .item {
+                    width: 100%;
+                    background-color: #EAEAEA;
+                    padding: 10px;
+                    box-sizing: border-box;
+                }
+            }
+        }
+
+        .edition-widget {
+            width: 300px;
+            min-height: 100%;
+            background: #CCC;
+        }
+
+    }
+
+}

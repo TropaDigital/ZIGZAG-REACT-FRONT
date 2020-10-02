@@ -1,4 +1,4 @@
-@import '../../__scss/Mixin.scss';
+@import '../../Styles/Mixin.scss';
 
 .nav-left {
     width:240px;
@@ -121,7 +121,7 @@
                     position: absolute;
                     top: -22px;
                     right: -19px;
-                    background-image: url(../../__images/curve_menu_top.png);
+                    background-image: url(../../Images/curve_menu_top.png);
                 }
                 &:after {
                     width: 19px;
@@ -130,7 +130,7 @@
                     position: absolute;
                     bottom: -22px;
                     right: -19px;
-                    background-image: url(../../__images/curve_menu_bottom.png);
+                    background-image: url(../../Images/curve_menu_bottom.png);
                 }
                 .bg {
                     width: 100%;
@@ -166,7 +166,7 @@
             background-color: rgba($color: #FFF, $alpha: 0.2);
             border-radius: 15px;
             position: relative;
-            background-image: url(../../__images/dash_support.png);
+            background-image: url(../../Images/dash_support.png);
             background-position: center;
             background-repeat: no-repeat;
             width:100%;
