@@ -4,20 +4,20 @@ import HorizontalScroll from 'react-scroll-horizontal'
 import Skeleton from 'react-loading-skeleton'
 import DatePicker from 'react-datepicker'
 import br from 'date-fns/locale/pt-BR';
-import { getDates, getDatesPeriodo, formatarNumero, getDaysDates } from '../../_api/helper'
+import { getDates, getDatesPeriodo, formatarNumero, getDaysDates } from '../../Api/helper'
 
 //scss
 import './Dashboard.scss'
 import 'react-datepicker/dist/react-datepicker.css'
 //icos
-import IconPhone from '../../__images/icos/icon_phone.png'
-import IconRocket from '../../__images/icos/icon_rocket.png'
-import IconDollar from '../../__images/icos/icon_dollar.png'
-import IconStar from '../../__images/icos/icon_star.png'
+import IconPhone from '../../Images/icos/icon_phone.png'
+import IconRocket from '../../Images/icos/icon_rocket.png'
+import IconDollar from '../../Images/icos/icon_dollar.png'
+import IconStar from '../../Images/icos/icon_star.png'
 //components
-import ButtonDashIcon from '../../_components/ButtonDashIcon/ButtonDashIcon'
-import ToggleSwitch from '../../_components/ToggleSwitch/ToggleSwitch'
-import DateDashMonth from '../../_components/DateDashMonth/DateDashMonth'
+import ButtonDashIcon from '../../Components/ButtonDashIcon/ButtonDashIcon'
+import ToggleSwitch from '../../Components/ToggleSwitch/ToggleSwitch'
+import DateDashMonth from '../../Components/DateDashMonth/DateDashMonth'
 
 export default function Dashboard(props) {
 
@@ -164,6 +164,20 @@ export default function Dashboard(props) {
             return true
 
         })
+
+        var backend = {
+            ativas: 23,
+            envios: formatarNumero(totalSms + totalFlashSms + totalWhatsApp),
+            visualizacoes: formatarNumero(66),
+            envios: {
+                sms: formatarNumero(totalSms),
+                flashsms: formatarNumero(totalFlashSms),
+                whatsapp: formatarNumero(totalWhatsApp)
+            },
+            graph: response
+        }
+
+        console.log( backend )
 
         setAtivas(23)
         setEnvios( formatarNumero(totalSms + totalFlashSms + totalWhatsApp) )

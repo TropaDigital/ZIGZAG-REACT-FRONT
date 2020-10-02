@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 //scss
 import './LayoutPrivate.scss'
 //images
-import Logo from '../../__images/logo.png'
-import MaleSupport from '../../__images/male_support.png'
+import Logo from '../../Images/logo.png'
+import MaleSupport from '../../Images/male_support.png'
 //images_icons
-import IconDashboard from '../../__images/icos/icon_dashboard.png'
-import IconCampgain from '../../__images/icos/icon_campgain.png'
-import IconTemplate from '../../__images/icos/icon_template.png'
-import IconAnalytics from '../../__images/icos/icon_analytics.png'
-import IconConfiguration from '../../__images/icos/icon_configuration.png'
-import IconTicket from '../../__images/icos/icon_ticket.png'
-import IconFaq from '../../__images/icos/icon_faq.png'
+import IconDashboard from '../../Images/icos/icon_dashboard.png'
+import IconCampgain from '../../Images/icos/icon_campgain.png'
+import IconTemplate from '../../Images/icos/icon_template.png'
+import IconAnalytics from '../../Images/icos/icon_analytics.png'
+import IconConfiguration from '../../Images/icos/icon_configuration.png'
+import IconTicket from '../../Images/icos/icon_ticket.png'
+import IconFaq from '../../Images/icos/icon_faq.png'
 
 export default function LayoutPrivate(props){
 

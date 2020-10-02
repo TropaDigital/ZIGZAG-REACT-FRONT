@@ -1,4 +1,4 @@
-@import '../../__scss/Mixin.scss';
+@import '../../Styles/Mixin.scss';
 
 #login {
     background-color: #4d5158;
@@ -57,10 +57,10 @@
                         background-position: center left;
                         background-repeat: no-repeat;
                         &.email {
-                            background-image: url(../../__images/icos/icon_email.png);
+                            background-image: url(../../Images/icos/icon_email.png);
                         }
                         &.password {
-                            background-image: url(../../__images/icos/icon_password.png);
+                            background-image: url(../../Images/icos/icon_password.png);
                         }
                     }
                 }
@@ -85,7 +85,7 @@
             }
         }
         .right {
-            background-image: url(../../__images/banner_login.jpg);
+            background-image: url(../../Images/banner_login.jpg);
             height: 100%;
             width: 50%;
             border-radius: 0px 13px 13px 0px;

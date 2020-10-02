@@ -1,4 +1,4 @@
-@import '../../__scss/Mixin.scss';
+@import '../../Styles/Mixin.scss';
 
 #dashboard {
     .list-reports {
@@ -46,7 +46,7 @@
                             z-index: 5;
                             left: 0;
                             top:4px;
-                            background-image: url(../../__images/icos/icon_calendar.png);
+                            background-image: url(../../Images/icos/icon_calendar.png);
                         }
                     }
                     > button {
@@ -132,7 +132,7 @@
     .video-phone {
         width: 286px;
         height: 506px;
-        background-image: url(../../__images/video-phone.png);
+        background-image: url(../../Images/video-phone.png);
         float: right;
     }
 }

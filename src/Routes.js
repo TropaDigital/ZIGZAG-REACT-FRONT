@@ -2,22 +2,20 @@
 import { BrowserRouter as Router, Switch, Route, useLocation, Redirect } from 'react-router-dom'
 
 //views
-import Dashboard from './_views/Dashboard/Dashboard'
-import Login from './_views/Login/Login'
-import Campanhas from './_views/Campanhas/Campanhas'
+import Dashboard from './Pages/Dashboard/Dashboard'
+import Login from './Pages/Login/Login'
+import Templates from './Pages/Templates/Templates'
 
-import NovaCampanha1 from './_views/NovaCampanha/Step1'
-import NovaCampanha2 from './_views/NovaCampanha/Step2'
-import NovaCampanha3 from './_views/NovaCampanha/Step3'
-import NovaCampanha4 from './_views/NovaCampanha/Step4'
-import NovaCampanha5 from './_views/NovaCampanha/Step5'
+import Campanhas from './Pages/Campanhas/Campanhas'
+
+import NovaCampanha1 from './Pages/NovaCampanha/Step1'
+import NovaCampanha2 from './Pages/NovaCampanha/Step2'
+import NovaCampanha3 from './Pages/NovaCampanha/Step3'
+import NovaCampanha4 from './Pages/NovaCampanha/Step4'
+import NovaCampanha5 from './Pages/NovaCampanha/Step5'
 
 //components
-import LayoutPrivate from './_components/Layout/LayoutPrivate'
-
-const Templates = () => (
-  <div className="page"><h1>Templates</h1></div>
-)
+import LayoutPrivate from './Components/Layout/LayoutPrivate'
 
 const Analytics = () => (
   <div className="page"><h1>Analytics</h1></div>

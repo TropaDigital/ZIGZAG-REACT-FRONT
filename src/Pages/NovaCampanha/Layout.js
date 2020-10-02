@@ -1,24 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Skeleton from 'react-loading-skeleton'
+import React from 'react'
 
 //scss
-import '../../__scss/Global.scss'
 import './NovaCampanha.scss'
 import { Link } from 'react-router-dom'
 
 export default function Layout(props) {
-
-    //loading
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        
-        //fake loading
-        setTimeout(function(){
-            setLoading(false)
-        }, 2000 )
-
-    }, [])
 
     return(
         <div className="page">

@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 //scss
 import './Login.scss'
 //images
-import Logo from '../../__images/logo_color.png'
+import Logo from '../../Images/logo_color.png'
 
 export default function Login(props) {
     

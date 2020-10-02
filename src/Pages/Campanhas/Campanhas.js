@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import Skeleton from 'react-loading-skeleton'
+import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import br from 'date-fns/locale/pt-BR';
 
 //scss
-import '../../__scss/Global.scss'
 import './Campanhas.scss'
 
 export default function Campanhas(props) {
 
-    //loading
-    const [loading, setLoading] = useState(true)
-
     //filtros
-    const [dataInicial, setDataInicial] = useState('')
-    const [dataFinal, setDataFinal] =  useState('')
+    const [dataInicial] = useState('')
+    const [dataFinal] =  useState('')
 
     //accordion
     const [accordion, setAccordion] = useState(0)
 
     //campanhas
     const data = [{},{},{},{},{}]
-
-    useEffect(() => {
-        
-        //fake loading
-        setTimeout(function(){
-            setLoading(false)
-        }, 2000 )
-
-    }, [])
 
     return(
         <div className="page">
@@ -88,7 +74,7 @@ export default function Campanhas(props) {
             <div className="accordion">
                 
                 {data.map((e, i) => (
-                <div key={i} className={`item ${accordion == i ? 'active' : null}`}>
+                <div key={i} className={`item ${accordion === i ? 'active' : null}`}>
                     
                     <div className="title" onClick={() => setAccordion(i)}>Nome da Campanha 0{i+1}</div>
 
