@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import FieldsetWidget from '../../Edition/FieldsetWidget'
+import FormEditWidget from '../../Edition/FormEditWidget'
+
+import ImageDefault from '../../../../Images/widgets/image_default.png'
+
+import './Image.scss'
 
 const Image = (props) => {
 
@@ -15,7 +21,9 @@ const Image = (props) => {
 
     return(
 
-        <img src={options.src} style={styleOptions}/>
+        <div className="image-widget">
+            <img src={ !options.src ? ImageDefault : options.src } style={styleOptions}/>
+        </div>
 
     )
 
@@ -38,7 +46,6 @@ const ImageEdit = ({id, item, onSave, onClose}) => {
     function handleOnChange(e)
     {
 
-        //setLoad(true)
         options[e.target.name] = e.target.value
         setOptions({})
 
@@ -49,41 +56,28 @@ const ImageEdit = ({id, item, onSave, onClose}) => {
 
         <>
         { load === false && 
+            <FormEditWidget onSave={onSave} item={item}>
 
-            <div>
-                
-                <fieldset>
-
-                    <legend>largura</legend>
-                    <input onChange={(e) => handleOnChange(e)} name="width" defaultValue={options.width} />
-                    
+                <FieldsetWidget legend="Largura">
+                    <input type="text" onChange={(e) => handleOnChange(e)} name="width" defaultValue={options.width} />
                     <select onChange={(e) => handleOnChange(e)} name="widthType" value={options.widthType}>
                         <option value="px">pixel</option>
                         <option value="%">porcentagem</option>
                     </select>
+                </FieldsetWidget>
 
-                </fieldset>
-
-                <fieldset>
-
-                    <legend>altura</legend>
-
-                    <input onChange={(e) => handleOnChange(e)} name="height" defaultValue={options.height} />
-
+                <FieldsetWidget legend="Altura">
+                    <input type="text" onChange={(e) => handleOnChange(e)} name="height" defaultValue={options.height} />
                     <select onChange={(e) => handleOnChange(e)} name="heightType" defaultValue={options.heightType}>
                         <option value="px">pixel</option>
                     </select>
+                </FieldsetWidget>
 
-                </fieldset>
+                <FieldsetWidget legend="Imagem">
+                    <input type="text" onChange={(e) => handleOnChange(e)} name="src" defaultValue={options.src} />
+                </FieldsetWidget>
 
-                <fieldset>
-                    <legend>imagem</legend>
-                    <input onChange={(e) => handleOnChange(e)} name="src" defaultValue={options.src} />
-                </fieldset>
-
-                <button onClick={() => onSave(item)}>Save</button>
-
-            </div>
+            </FormEditWidget>
 
         }
         </>

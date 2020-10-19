@@ -17,11 +17,11 @@ import IconFaq from '../../Images/icos/icon_faq.png'
 
 export default function LayoutPrivate(props){
 
-    const [page, setPage] = useState(props.location.pathname)
+    const [page, setPage] = useState('/'+props.location.pathname.split('/')[1])
 
     useEffect(() => {
 
-        setPage(props.location.pathname)
+        setPage('/'+props.location.pathname.split('/')[1])
         scrollTop()
 
     }, [props])
@@ -39,7 +39,7 @@ export default function LayoutPrivate(props){
             <nav className="nav-left">
 
                 <div className="logo">
-                <img alt="Logo" src={Logo}/>
+                    <img alt="Logo" src={Logo}/>
                 </div>
 
                 <div className="link">
@@ -72,7 +72,7 @@ export default function LayoutPrivate(props){
                     </li>
 
                     <li>
-                        <Link className={page === '/templates' ? 'active' : 'no-active'} to="/templates">
+                        <Link className={page === '/templates' ? 'active' : 'no-active'} to="/templates/">
                             <img alt="Icone template" src={IconTemplate}/>
                             <span className="text">Templates</span>
                             <span className="bg"></span>

@@ -4,7 +4,11 @@ import { BrowserRouter as Router, Switch, Route, useLocation, Redirect } from 'r
 //views
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Login from './Pages/Login/Login'
-import Templates from './Pages/Templates/Templates'
+
+//template
+import Index from './Pages/Templates/Index'
+import Creation from './Pages/Templates/Creation'
+import Detalhe from './Pages/Templates/Detalhe'
 
 import Campanhas from './Pages/Campanhas/Campanhas'
 
@@ -89,6 +93,8 @@ export default function Routes() {
 
           <Route exact path="/login" component={Login}/>
 
+          <Route exact path="/t/:id" component={Detalhe}/>
+
           <LayoutPrivate>
 
             <PrivateRoute exact path="/">
@@ -115,8 +121,12 @@ export default function Routes() {
               <Route component={Campanhas}/>
             </PrivateRoute>
 
-            <PrivateRoute exact path="/templates">
-              <Route component={Templates}/>
+            <PrivateRoute exact path="/templates/">
+              <Route component={Index}/>
+            </PrivateRoute>
+
+            <PrivateRoute exact path="/templates/create/:id">
+              <Route component={Creation}/>
             </PrivateRoute>
 
             <PrivateRoute exact path="/analytics">

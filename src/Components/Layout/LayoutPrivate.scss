@@ -230,7 +230,7 @@
     width: calc(100% - 240px - 37px);
     float: right;
     margin-left: 27px;
-    .content {
+    > .content {
         box-sizing: border-box;
         padding-left: 35px;
         float: left;

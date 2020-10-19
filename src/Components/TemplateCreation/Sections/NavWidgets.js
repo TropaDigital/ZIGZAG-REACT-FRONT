@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ReactSortable } from 'react-sortablejs'
 
-import Image from '../Widgets/Image';
 import WidgetStore from '../../../Helper/WidgetStore'
 
 const NavWidgets = (props) => {
@@ -28,62 +27,79 @@ const NavWidgets = (props) => {
         <div className="widgets">
 
             <div className="head">
-                Arraste o <b>Widget</b> desejado para o celular ao lado para criar seus templates
+
+                <span>Arraste o <b>Widget</b> desejado para o celular ao lado para criar seus templates</span>
+                <i></i>
+
             </div>
 
             <div className="sections">
             
-                <div className="section">
+                <div className="section-parent">
+                    <div className="section">
 
-                    <p>Adicionar seções</p>
+                        <p>Adicionar seções</p>
 
-                    <ReactSortable 
-                        animation={150}
-                        sort={false}
-                        list={secao} 
-                        setList={() => {}}
-                        group={
-                            {
-                                name: 'shared',
-                                pull: 'clone',
-                                put: false
+                        <ReactSortable 
+                            animation={150}
+                            sort={false}
+                            list={secao} 
+                            setList={() => {}}
+                            group={
+                                {
+                                    name: 'shared',
+                                    pull: 'clone',
+                                    put: false
+                                }
                             }
-                        }
-                    >
-                        {secao.map((row, key) => (
-                            <div className="item" key={key}>
-                                <i className={row.template.ico}></i>
-                                <span>{row.template.name}</span>
-                            </div>
-                        ))}
-                    </ReactSortable>
+                        >
+                            {secao.map((row, key) => (
+                                <div className="item" key={key}>
+                                    <i className={row.template.ico}></i>
+                                    <span>{row.template.name}</span>
+                                </div>
+                            ))}
+                        </ReactSortable>
 
+                    </div>
+                    <div className="section">
+
+
+                        <p>Adicionar conteúdo</p>
+
+                        <ReactSortable 
+                            animation={150}
+                            sort={false}
+                            list={conteudo} 
+                            setList={() => {}}
+                            group={
+                                {
+                                    name: 'shared',
+                                    pull: 'clone',
+                                    put: false
+                                }
+                            }
+                        >
+                            {conteudo.map((row, key) => (
+                                <div className="item" key={key}>
+                                    <i className={row.template.ico}></i>
+                                    <span>{row.template.name}</span>
+                                </div>
+                            ))}
+                        </ReactSortable>
+
+                    </div>
                 </div>
 
-                <div className="section">
+                <div className="button-footer-widgets">
 
-                    <p>Adicionar conteúdo</p>
+                    <button className="restart" onClick={props.handleResetTemplate}>
+                        Limpar tudo
+                    </button>
 
-                    <ReactSortable 
-                        animation={150}
-                        sort={false}
-                        list={conteudo} 
-                        setList={() => {}}
-                        group={
-                            {
-                                name: 'shared',
-                                pull: 'clone',
-                                put: false
-                            }
-                        }
-                    >
-                        {conteudo.map((row, key) => (
-                            <div className="item" key={key}>
-                                <i className={row.template.ico}></i>
-                                <span>{row.template.name}</span>
-                            </div>
-                        ))}
-                    </ReactSortable>
+                    <button className="save" onClick={props.handleSaveTemplate}>
+                        Salvar
+                    </button>
 
                 </div>
 

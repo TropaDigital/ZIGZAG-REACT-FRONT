@@ -7,7 +7,7 @@ import WidgetStore from '../../Helper/WidgetStore'
 
 import './Templates.scss'
 
-export default function Templates(props) {
+export default function Creation(props) {
 
     const [loading, setLoading] = useState(false)
 
@@ -32,20 +32,31 @@ export default function Templates(props) {
 
         setLoading(false)
         WidgetStore.setState()
-        console.log(template, WidgetStore.getState())
+
+        console.log('template update')
 
     }, [template])
 
     function editWidget(item, id, componentEdit)
     {
 
-        console.log(item, id)
-
         setEditionWidgetEdit({
-            item: item,
-            id: id,
-            component: componentEdit
+            item: false,
+            id: false,
+            component: false
         })
+
+        console.log('clicou')
+
+        setTimeout(function(){
+
+            setEditionWidgetEdit({
+                item: item,
+                id: id,
+                component: componentEdit
+            })
+            
+        }, 0)
 
     }
 
@@ -118,16 +129,30 @@ export default function Templates(props) {
 
     }
 
+    function handleSaveTemplate()
+    {
+
+        window.localStorage.setItem('template', JSON.stringify(template))
+        
+    }
+
+    function handleResetTemplate()
+    {
+
+        setTemplate([])
+
+    }
+
     return(
 
         <div id="templates" className="page">
 
             <div id="creation">
 
-                <button onClick={() => window.localStorage.setItem('template', JSON.stringify(template))}>Salvar</button>
-
                 <NavWidgets
                     template={template}
+                    handleResetTemplate={handleResetTemplate}
+                    handleSaveTemplate={handleSaveTemplate}
                 />
 
                 <div className="creation-layout">
@@ -138,7 +163,7 @@ export default function Templates(props) {
                         list={template}
                         setList={setTemplate}
                     >
-                        {loading === false && template.map((item, key) => (
+                        {loading === false && template && template.map((item, key) => (
                             <WidgetRender
                                 updateWidgetColumn={updateWidgetColumn}
                                 id={item.id}

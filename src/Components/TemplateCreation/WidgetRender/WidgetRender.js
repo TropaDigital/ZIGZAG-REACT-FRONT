@@ -24,6 +24,8 @@ const WidgetRender = (props) => {
     return(
         <div className={props.editId === props.id ? props.item.className+' item-renderized edit' : props.item.className+' item-renderized'}>
 
+            {props.edit}
+
             { props.edit === true &&
                 <ButtonWidget
                     editWidget={props.editWidget}
@@ -47,6 +49,7 @@ const WidgetRender = (props) => {
                     id={props.id}
                     editId={props.editId}
                     setLoading={props.setLoading}
+                    edit={props.edit}
                 />
             }
 
