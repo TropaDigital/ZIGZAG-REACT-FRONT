@@ -49,8 +49,10 @@ const TextEdit = ({id, item, onSave, onClose}) => {
     
     useEffect(() => {
 
+        console.log(item)
         setOptions(item.options)
         setLoad(false)
+        onSave(options)
 
     }, [item])
 
@@ -65,6 +67,7 @@ const TextEdit = ({id, item, onSave, onClose}) => {
 
         options.text = editor.getData()
         //setOptions({})
+        onSave(options)
 
     }
 
@@ -102,6 +105,7 @@ const TextEdit = ({id, item, onSave, onClose}) => {
         setOptions(options)
         
         handleChangeCkEditor()
+        onSave(options)
 
     }
 

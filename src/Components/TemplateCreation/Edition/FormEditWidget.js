@@ -10,8 +10,6 @@ const FormEditWidget = ({onSave, item, children}) => (
 
         </div>
 
-        <button type="submit">Avançar</button>
-
     </form>
 
 )

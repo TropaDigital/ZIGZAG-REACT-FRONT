@@ -52,6 +52,7 @@ const ButtonEdit = ({id, item, onSave, onClose}) => {
 
         setOptions(item.options)
         setLoad(false)
+        onSave(options)
 
     }, [item])
 
@@ -66,6 +67,7 @@ const ButtonEdit = ({id, item, onSave, onClose}) => {
 
         options[e.target.name] = e.target.value
         setOptions(options)
+        onSave(options)
 
     }
 

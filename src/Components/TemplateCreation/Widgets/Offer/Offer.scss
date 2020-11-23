@@ -1,0 +1,63 @@
+.offer-widget {
+    padding-bottom: 60px;
+    .title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .img {
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        position: relative;
+        .values {
+            display: flex;
+            flex-direction: column;
+            margin: 0px 0px -60px 10px;
+            box-sizing: border-box;
+            min-width: 130px;
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            padding: 5px;
+            div {
+                border: 2px dashed rgba($color: #FFF, $alpha: .2);
+                border-radius: 3px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                padding: 20px 0px 10px 0px;
+                > span {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    padding: 0px 10px;
+                    &:first-child {
+                        border-bottom: 2px solid rgba($color: #FFF, $alpha: .5);
+                        margin-bottom: 10px;
+                        padding-bottom: 5px;
+                    }
+                    .prev {
+                        font-size: 10px;
+                        margin-right: 10px;
+                        line-height: 0px;
+                    }
+                    .next {
+                        font-size: 18px;
+                        //line-height: px;
+                    }
+                }
+            }
+        }
+    }
+
+}

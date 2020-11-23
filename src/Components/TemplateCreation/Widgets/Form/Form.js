@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import nextId from 'react-id-generator'
 import { ReactSortable } from 'react-sortablejs'
 import FieldsetWidget from '../../Edition/FieldsetWidget'
@@ -54,12 +54,15 @@ const FormEdit = ({id, item, onSave, onClose}) => {
 
         setOptions(optionInput)
 
+        onSave(options)
+
     }
 
     function handleChangeTitleStyle(e)
     {
 
         console.log(e)
+        onSave(options)
 
     }
 
@@ -83,6 +86,7 @@ const FormEdit = ({id, item, onSave, onClose}) => {
 
         optionNew.fields = fieldsNew
         setOptions(optionNew)
+        onSave(options)
 
         setTimeout(function(){
             setLoad(false)
@@ -112,6 +116,7 @@ const FormEdit = ({id, item, onSave, onClose}) => {
         optionNew.fields = fieldsNew
 
         setOptions(optionNew)
+        onSave(options)
 
         console.log('handleOnCHangeField')
 
@@ -128,6 +133,7 @@ const FormEdit = ({id, item, onSave, onClose}) => {
 
         options.fields = fields
         setOptions(...[options])
+        onSave(options)
 
         setTimeout(function(){
             setLoad(false)
@@ -142,6 +148,7 @@ const FormEdit = ({id, item, onSave, onClose}) => {
 
         options.fields = fields
         setOptions(...[options])
+        onSave(options)
 
     }
 
@@ -166,6 +173,7 @@ const FormEdit = ({id, item, onSave, onClose}) => {
 
         options.fields.push( newField )
         setOptions(...[options])
+        onSave(options)
 
         setTimeout(function(){
             setLoad(false)
@@ -182,6 +190,7 @@ const FormEdit = ({id, item, onSave, onClose}) => {
         setTimeout(function(){
             setLoad(false)
         }, 0 )
+        onSave(options)
 
     }
 
@@ -237,7 +246,7 @@ const FormEdit = ({id, item, onSave, onClose}) => {
 
                         </ReactSortable>
 
-                        <button className="button-default-gray" onClick={handleNewField} style={{margin: '10px 0px -10px 0px'}}>
+                        <button type="button" className="button-default-gray" onClick={handleNewField} style={{margin: '10px 0px -10px 0px'}}>
                             Adicionar item
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                         </button>

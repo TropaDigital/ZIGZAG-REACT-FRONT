@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
+import { api } from '../../Api/app'
 import WidgetRender from '../../Components/TemplateCreation/WidgetRender/WidgetRender'
 
 import './Templates.scss'
@@ -10,16 +11,24 @@ export default function Detalhe(props) {
 
     const [template, setTemplate] = useState([])
 
+    const id = props.match.params.id
+
     useEffect(() => {
 
-        var preDefinido = window.localStorage.getItem('template')
-
-        if ( preDefinido ) {
-            preDefinido = JSON.parse(preDefinido)
-            setTemplate( ...[preDefinido] )
-        }
+        getData()
 
     }, [props])
+
+    async function getData()
+    {
+
+        var response = await api.get('templates/'+id)
+
+        if ( response.data.estrutura != '[{}]' ) {
+            setTemplate( ...[JSON.parse(response.data.estrutura)] )
+        }
+        
+    }
 
     return(
 

@@ -40,6 +40,7 @@ const VideoEdit = ({id, item, onSave, onClose}) => {
         console.log( item )
         setOptions({})
         setOptions(item.options)
+        onSave(options)
 
     }, [item, options])
 
@@ -59,8 +60,8 @@ const VideoEdit = ({id, item, onSave, onClose}) => {
 
         options[e.target.name] = e.target.value
 
+        onSave(options)
         setOptions({})
-
 
     }
 

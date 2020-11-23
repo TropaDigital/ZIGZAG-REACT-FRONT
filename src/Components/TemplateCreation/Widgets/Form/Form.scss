@@ -56,6 +56,12 @@
         font-size: 15px;
     }
     .group {
+        fieldset {
+            margin: 20px 0px 0px 0px !important;
+            legend {
+                color:#FFF !important;
+            }
+        }
         > label {
             padding:5px 0px;
             &.required {

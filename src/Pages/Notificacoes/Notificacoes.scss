@@ -1,0 +1,53 @@
+@import "../../Styles/Mixin.scss";
+
+#notificacoes {
+    .list-notificacations {
+        .notification {
+            display: flex;
+            .funcoes {
+                width: 0px;
+                overflow: hidden;
+                transition: all .5s;
+                button {
+                    border-radius: 0px;
+                    height: 100%;
+                    justify-content: center;
+                }
+            }
+            .not-text {
+                width: 100%;
+                display: flex;
+                padding:15px 0px;
+                border-bottom: 1px solid #d7dde7;
+                transition: all .5s;
+                .img {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 18px;
+                    background-size: cover;
+                    background-position: center;
+                }
+                .text {
+                    margin-left: 10px;
+                    font-size: 14px;
+                    color: $color_text;
+                    .not {
+
+                    }
+                    .date {
+                        opacity: .7;
+                        font-size: 12px;
+                    }
+                }
+            }
+            &:hover {
+                .not-text {
+                    padding-left: 20px;
+                }
+                .funcoes {
+                    width: 80px;
+                }
+            }
+        }
+    }   
+}

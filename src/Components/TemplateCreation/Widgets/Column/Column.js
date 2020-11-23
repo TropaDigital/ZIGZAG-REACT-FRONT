@@ -16,8 +16,14 @@ const ColumnElement = (props) => {
     const styleOptions = {
         padding: options.padding,
         backgroundColor: options.backgroundColor,
-        minHeight: options.minHeight+options.minHeightType,
+        minHeight: options.minHeight !== 'auto' ? options.minHeight+options.minHeightType : 'auto',
     }
+
+    useEffect(() => {
+
+        console.log('renderizou uma column')
+
+    }, [])
 
     useEffect(() => {
 
@@ -25,13 +31,11 @@ const ColumnElement = (props) => {
 
     }, [props])
 
-    function handleSetItems( state ) {
+    function handleSetItems( state, e ) {
 
-        if ( props.edit === true ){
+        if ( e && props.edit === true ){
             setItems(state)
             props.handleSetList( state, props.keyElement )
-        } else {
-            //alert('Alo alo')
         }
 
     }
@@ -42,8 +46,8 @@ const ColumnElement = (props) => {
                 group="shared"
                 animation={150}
                 list={items}
-                setList={handleSetItems}
-                onEnd={(e) => console.log(e)}
+                setList={(state, e) => handleSetItems(state, e)}
+                onEnd={(e) => console.log( e.to )}
             >
                 { items && items.map((item, itemkey) => 
                     <WidgetRender
@@ -71,17 +75,15 @@ const Column = (props) => {
     
     const [content, setContent] = useState([])
 
+    const [load, setLoad] = useState(false)
+
     useEffect(() => {
 
         setContent(...[props.item.content])
 
+        //console.log('renderizou a coluna geral')
+
     }, [props])
-
-    useEffect(() => {
-
-        
-
-    }, [content])
 
     function handleSetList(state, indice)
     {
@@ -98,9 +100,8 @@ const Column = (props) => {
 
         })
 
-        console.log('handleSetList', newContent, props.id)
-
-        if ( newContent.length === content.length ) props.updateWidgetColumn( newContent, props.id )
+        //setContent(...newContent)
+        props.updateWidgetColumn( newContent, props.id )
 
     }
 
@@ -122,14 +123,13 @@ const Column = (props) => {
         props.updateWidgetColumn( newContent, props.id )
         setContent(...newContent)
 
-
     }
 
     return(
 
         <div className="columns">
             { content.map((row, key) =>
-                <ColumnElement edit={props.edit} handleRemoveList={handleRemoveList} handleSetList={handleSetList} row={row} keyElement={key} {...props}/>
+                <ColumnElement key={key} edit={props.edit} handleRemoveList={handleRemoveList} handleSetList={handleSetList} row={row} keyElement={key} {...props}/>
             )}
         </div>
 
@@ -149,6 +149,7 @@ const ColumnEdit = ({id, item, onSave, onClose}) => {
         console.log( item )
         setOptions({})
         setOptions(item.options)
+        onSave(options)
 
     }, [item, options])
 
@@ -158,6 +159,7 @@ const ColumnEdit = ({id, item, onSave, onClose}) => {
         //setLoad(true)
         options[e.target.name] = e.target.value
         console.log(options)
+        onSave(options)
         setOptions({})
 
     }

@@ -73,6 +73,7 @@ const MapEdit = ({id, item, onSave, onClose}) => {
     {
 
         options[e.target.name] = e.target.value
+        onSave(options)
         setOptions({})
 
     }
@@ -89,6 +90,7 @@ const MapEdit = ({id, item, onSave, onClose}) => {
             options.lng = res.data.results[0].geometry.location.lng            
             
             console.log(options)
+            onSave(options)
             setOptions({})
 
             setLoad(false)

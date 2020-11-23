@@ -14,10 +14,14 @@ import IconAnalytics from '../../Images/icos/icon_analytics.png'
 import IconConfiguration from '../../Images/icos/icon_configuration.png'
 import IconTicket from '../../Images/icos/icon_ticket.png'
 import IconFaq from '../../Images/icos/icon_faq.png'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 export default function LayoutPrivate(props){
 
+    const history = useHistory()
+
     const [page, setPage] = useState('/'+props.location.pathname.split('/')[1])
+
 
     useEffect(() => {
 
@@ -89,7 +93,7 @@ export default function LayoutPrivate(props){
 
                     <li>
                         <Link className={page === '/configuracoes' ? 'active' : 'no-active'} to="/configuracoes">
-                            <img alt="Icone configura��o" src={IconConfiguration}/>
+                            <img alt="Icone configurações" src={IconConfiguration}/>
                             <span className="text">Configurações</span>
                             <span className="bg"></span>
                         </Link>
@@ -99,7 +103,7 @@ export default function LayoutPrivate(props){
                         <span>Suporte</span>
                     </li>
 
-                    <li>
+                    <li style={{display: 'none'}}>
                         <Link className={page === '/tickets' ? 'active' : 'no-active'} to="/tickets">
                             <img alt="Icone Ticket" src={IconTicket}/>
                             <span className="text">Tickets</span>
@@ -137,27 +141,37 @@ export default function LayoutPrivate(props){
 
                     <div className="left">
                         <div className="name-client">
-                            Zigzag
-                        </div>
-                        <div className="name-user">
-                            Kaique Steck
+                            {props.user.account.nome}
                         </div>
                     </div>
 
                     <div className="right">
 
                         <div className="notification">
-                            <button>
-                                <span>3</span>
+                            <button onClick={() => history.push('/notificacoes')}>
+                            
+                            { props.logs.total > 0 &&
+                                <span id="total-notification">{props.logs.total}</span>
+                            }
+
                             </button>
                         </div>
 
                         <div className="menu-user">
                             
                             <button>
-                                <i style={{backgroundImage: 'url(https://i.ibb.co/YWMjDMd/image.png)'}}></i>
-                                <span>Tropa Digital</span>
+                                <i id="img-profile" style={{backgroundImage: 'url('+props.user.foto+')'}}></i>
+                                <span id="name-user">{props.user.nome}</span>
                             </button>
+
+                            <div className="submenu">
+
+                                <Link to="/configuracoes">Configurações</Link>
+                                <Link to="/configuracoes/dados-pagamento">Dados de cobrança</Link>
+                                <Link to="/notificacoes">Notificações</Link>
+                                <Link to="/login">Sair</Link>
+
+                            </div>
 
                         </div>
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const EditionWidget = (props) => {
 
-    const linkPlatform = window.location.protocol+'//'+window.location.host+'/template/preview'
+    const linkPlatform = window.location.protocol+'//'+(window.location.host === 'localhost:3000' ? '192.168.15.14:3000' : window.location.host)+'/t/'+props.id
     const qrCodeImg = "https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl="+linkPlatform
 
     return(
@@ -31,13 +31,13 @@ const EditionWidget = (props) => {
             
             <div className="no-edition">
 
-                <p>Para pré-visualizar o Template no seu celular, salve o template e aponte a camera para o QRCode abaixo.</p>
+                <p>Para pré-visualizar o Template no seu celular, <span>salve o template</span> e aponte a camera para o QRCode abaixo.</p>
 
                 <img src={qrCodeImg}/>
 
                 <p>Caso prefira, digite no seu navegador o endereço: </p>
 
-                <a>{linkPlatform}</a>
+                <a href={linkPlatform} target="_blank">{linkPlatform}</a>
 
             </div>
             

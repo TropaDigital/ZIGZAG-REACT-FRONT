@@ -12,11 +12,13 @@
     "date-fns": "^2.14.0",
     "google-map-react": "^2.1.8",
     "google-maps-react": "^2.0.6",
+    "html2canvas": "^1.0.0-rc.7",
     "lodash.uniqueid": "^4.0.1",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-bootstrap-range-slider": "^1.2.2",
     "react-ckeditor-component": "^1.1.0",
+    "react-countdown": "^2.3.1",
     "react-currency-masked-input": "^2.5.0",
     "react-datepicker": "^3.0.0",
     "react-dom": "^16.13.1",
@@ -26,13 +28,15 @@
     "react-leaf-carousel": "^2.0.3",
     "react-loading-skeleton": "^2.1.1",
     "react-lodash": "^0.1.2",
+    "react-notifications-component": "^2.4.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-scroll-horizontal": "^1.6.4",
     "react-scrollbar": "^0.5.6",
     "react-sortablejs": "^2.0.11",
     "recharts": "^1.8.5",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -58,6 +62,7 @@
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-utils": "^23.5.1",
     "@ckeditor/ckeditor5-theme-lark": "^23.0.0",
+    "@iconify-icons/mdi": "^1.0.21",
     "@iconify/icons-ant-design": "^1.0.8",
     "@iconify/icons-bx": "^1.0.3",
     "@iconify/icons-bytesize": "^1.0.1",
