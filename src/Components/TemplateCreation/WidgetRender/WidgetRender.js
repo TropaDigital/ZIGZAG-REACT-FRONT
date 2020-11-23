@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ButtonWidget from '../ButtonWidget/ButtonWidget'
-import WidgetStore from '../../../Helper/WidgetStore'
+import WidgetStore from '../../../Store/WidgetStore'
 
 const WidgetRender = (props) => {
 
@@ -22,7 +22,7 @@ const WidgetRender = (props) => {
     }, [props])
 
     return(
-        <div className={props.editId === props.id ? props.item.className+' item-renderized edit' : props.item.className+' item-renderized'}>
+        <div key={props.key} id={props.id} className={props.editId === props.id ? props.item.className+' item-renderized edit' : props.item.className+' item-renderized'}>
 
             { props.edit === true &&
                 <ButtonWidget
@@ -47,6 +47,7 @@ const WidgetRender = (props) => {
                     id={props.id}
                     editId={props.editId}
                     setLoading={props.setLoading}
+                    edit={props.edit}
                 />
             }
 

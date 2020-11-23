@@ -1,51 +1,419 @@
-#steps{
-    display: flex;
-    justify-items: center;
-    align-content: space-between;
-    margin: 10px 0 30px 0;
-    > a{
-        position: relative;
-        box-sizing: border-box;
-        padding: 5px 10px;
-        width: 18%;
-        color: #fff;
-        margin-left: 30px;
-        transition: .2s;
-        background-color: #8999a3;
-        > small{
-            font-size: 75%;
+@import '../../Styles/Mixin.scss';
+
+#novaCampanha {
+    
+    .send-camp {
+        background-color: $color_blue;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 10px 15px;
+        color: #FFF;
+        border-radius: 3px;
+    }
+
+    .steps {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .button-zig {
+            margin-right: -30px;
+            width: 80px;
         }
-        &.active{
-            background-color: #5973f3;
-        }
-        &:before{
-            position: absolute;
-            display: block;
-            top: 15px;
-            left: -25px;
-            border-radius: 50%;
-            background-color: #333;
-            content: ">";
-            width: 20px;
-            height: 20px;
-            line-height: 17px;
-            text-align: center;
-        }
-        &:first-child{
-            margin-left: 0;
-            &:before{
-                display: none;
+        button.step-bt {
+            color: #FFF;
+            font-weight: 600;
+            width: calc(20% - 44px);
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            align-items: flex-start;
+            padding: 5px 10px;
+            background-color: #8999a3;
+            cursor: pointer;
+            transition: all .2s;
+            b {
+                font-size: 18px;
+            }
+            span {
+                font-size: 12px;
+            }
+            &:last-child {
+                &:after {
+                    display: none;
+                }
+            }
+            &:after {
+                width: 24px;
+                height: 24px;
+                background-image: url(../../Images/icos/icon-right.png);
+                content: '';
+                position: absolute;
+                left: calc(100% + 5px);
+                top: 50%;
+                transform: translate(0%, -50%);
+            }
+            &.active {
+                background-color: $color_blue;
+                animation-name: bounce;
+                animation-duration: 1s;
+                border-radius: 5px;
             }
         }
-        > small{
-            display: block;
+    }
+
+    .step {
+        animation-name: fadeIn;
+        animation-duration: 2s;
+        background-color: #FFF;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px 0px rgba($color: #000000, $alpha: .1);
+        padding: 20px 30px;
+        box-sizing: border-box;
+        margin: 30px 0px;
+        display: flex;
+        flex-direction: column;
+        > h2 {
+            font-size: 22px;
+            color: #606a75;
+            margin: 0px;
+            padding: 0px;
+        }
+        > p {
+            font-size: 13px;
+            color: #606a75;
+            margin: 0px;
+            padding: 0px
+        }
+        .separator {
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+            .input {
+                display: flex;
+                flex-direction: column;
+                width: 40%;
+                padding-right: 40px;
+                label {
+                    display: flex;
+                    flex-direction: row;
+                    margin: 5px 0px;
+                    span {
+                        padding-left: 5px;
+                    }
+                    
+                }
+                .lists-options {
+                    button {
+                        margin-top: 10px;
+                    }
+                }
+            }
+            .list {
+                display: flex;
+                flex-direction: column;
+                padding-left: 40px;
+                border-left: 1px solid rgba($color: #000000, $alpha: .1);
+                width: 100%;
+                overflow: auto;
+                max-height: 100%;
+                > div {
+                    display: flex;
+                    flex-direction: row;
+                    background-color: rgba($color: #000000, $alpha: .05);
+                    border-radius: 5px;
+                    justify-content: space-around;
+                    margin: 5px 0px;
+                    padding: 10px;
+                    align-items: center;
+                    animation-name: fadeIn;
+                    animation-duration: .5s;
+                    .contacts {
+                        padding: 4px 10px;
+                        cursor: auto;
+                        border-radius: 3px;
+                        font-size: 11px;
+                        margin-right: 10px;
+                        background-color: rgba($color: #000000, $alpha: .05);
+                        display: flex;
+                        align-items: center;
+                        font-weight: 200;
+                        &:before {
+                            display: inline-block;
+                            font: normal normal normal 14px/1 FontAwesome;
+                            font-size: inherit;
+                            text-rendering: auto;
+                            font-size: 14px;
+                            -webkit-font-smoothing: antialiased;
+                            -moz-osx-font-smoothing: grayscale;
+                            content: "\f2ba";
+                            -webkit-box-sizing: border-box;
+                            -moz-box-sizing: border-box;
+                            box-sizing: border-box;
+                            margin-right: 5px;
+                        }
+                    }
+                    label, > div {
+                        width: 100%;
+                        > input {
+                            margin-left:10px;
+                            cursor: pointer;
+                        }
+                        > span, .button-edit-list {
+                            font-weight: 600;
+                            color: $color_text;
+                            cursor: pointer;
+                            margin-left:10px;
+                        }
+                        .delete {
+                            background-color: rgba($color: red, $alpha: .3);
+                            margin-left:10px;
+                            padding: 3px 10px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-weight: 100;
+                            &:hover {
+                                background-color: rgba(#000, 0.15);
+                            }
+                        }
+                    }
+                }
+                
+            }
+            .message-campgain {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                .phone {
+                    width: 197px;
+                    height: 385px;
+                    background-image: url(../../Images/mobile_frame.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    box-sizing: border-box;
+                    .display {
+                        padding: 10px;
+                        box-sizing: border-box;
+                        height: 328px;
+                        width: 180px;
+                        margin: 20px 10px 10px 7px;
+                        overflow-x: auto;
+                        &.flashsms {
+                            justify-content: center;
+                            align-items: center;
+                            display: flex;
+                            flex-direction: column;
+                            background-image: url(../../Images/campgain/bg-flash.jpg);
+                            background-size: cover;
+                            .sender {
+                                display: none;
+                            }
+                            .message {
+                                background-color: rgba(#FFF, 0.2);
+                                border-radius: 5px;
+                                font-size: 11px;
+                                padding: 20px 15px;
+                                box-sizing: border-box;
+                                color: #FFF;
+                                text-align: center;
+                            }
+                        }
+                        &.whatsapp {
+                            background-image: url(../../Images/campgain/bg-wpp.jpg);
+                            .sender {
+                                font-weight: bold;
+                                font-size: 13px;
+                                color: $color_blue;
+                            }
+                            .message {
+                                background-color: #FFF;
+                                border-radius: 5px;
+                                font-size: 11px;
+                                padding: 10px;
+                                box-sizing: border-box;
+                            }
+                        }
+                        &.sms {
+                            .sender {
+                                display: none;
+                            }
+                            background-color: #FFF;
+                            .message {
+                                background-color: rgba(#000, 0.1);
+                                border-radius: 5px;
+                                font-size: 11px;
+                                padding: 10px;
+                                box-sizing: border-box;
+                            }
+                        }
+                    }
+                }
+                .phones {
+                    margin-top: 15px;
+                    display: inline-block;
+                    span {
+                        padding: 5px 13px;
+                        border-radius: 100px;
+                        background-color: $color_yellow;
+                        margin-right: 5px;
+                        margin-bottom: 5px;
+                        display: inline-block;
+                    }
+                }
+                > p {
+                    font-size: 17px;
+                    color: $color_text;
+                    width: 100%;
+                }
+                label {
+                    color: $color_text;
+                    display: flex;
+                    flex-direction: column;
+                    margin: 10px 0px;
+                    width: 100%;
+                    div {
+                        display: flex;
+                        button {
+                            font-size: 16px;
+                            background-color: #facc04;
+                            border-radius: 100px;
+                            padding: 8px 20px;
+                            white-space: nowrap;
+                            border-radius: 100px;
+                            text-transform: uppercase;
+                            font-weight: 600;
+                            color: $color_text;
+                            cursor: pointer;
+                            &[type="button"] {
+                                background-color: #606a75;
+                                color: #FFF;
+                                margin-left: 10px;
+                            }
+                        }
+                    }
+                    b {
+                        font-size: 14px;
+                        padding-bottom: 5px;
+                    }
+                    span {
+                        font-size: 12px;
+                    }
+                    input, textarea {
+
+                    }
+                    textarea {
+                        height: 110px;
+                        padding: 10px;
+                    }
+                }
+            }
+            .buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 30px;
+                button {
+                    font-size: 16px;
+                    background-color: #facc04;
+                    border-radius: 100px;
+                    padding: 10px 25px;
+                    border-radius: 100px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    color: $color_text;
+                    cursor: pointer;
+                    &[type="button"] {
+                        background-color: #606a75;
+                        color: #FFF;
+                        margin-top: 10px;
+                    }
+                    &:hover {
+                        opacity: .8;
+                    }
+                }
+            }
         }
     }
+
 }
 
-.box{
-    box-sizing: border-box;
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,.2);
-    border-radius: 20px;
-    padding: 30px;
+.modal-send-phone {
+    position: fixed;
+    z-index: 99999;
+    background-color: rgba($color: #FFF, $alpha: .9);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .modal {
+        width: 700px;
+        text-align: center;
+        h2 {
+
+        }
+        .send-campgain-type {
+            padding: 40px 0px;
+            animation-name: fadeIn;
+            animation-duration: 1s;
+            display: flex;
+            justify-content: space-around;
+            .phone {
+                width: 169px;
+                height: 306px;
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+                padding-top: 60px;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                animation-name: fadeInUp;
+                animation-duration: .5s;
+                &.sms {
+                    background-image: url(../../Images/campgain/send-sms.png);
+                }
+                &.flashsms {
+                    background-image: url(../../Images/campgain/send-flashsms.png);
+                }
+                &.whatsapp {
+                    background-image: url(../../Images/campgain/send-whatsapp.png);
+                }
+                &:hover {
+                    button {
+                        position: relative;
+                        z-index: 10;
+                        margin-bottom: 100%;
+                    }
+                    &:after {
+                        background-color: rgba($color: #FFF, $alpha: .8);
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        content: '';
+                    }
+                }
+                button {
+                    transition: all .5s;
+                    padding: 10px 25px;
+                    background-color: $color_yellow;
+                    border-radius: 100px;
+                    color: #606a75;
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-size: 16px;
+                    text-transform: uppercase;
+                }
+            }
+    
+        }
+    }
 }

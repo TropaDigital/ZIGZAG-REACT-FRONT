@@ -1,0 +1,59 @@
+@import '../../Styles/Mixin.scss';
+
+.input-default-zig {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px;
+    width: 100%;
+    &:first-child {
+        margin-left: 0px;
+    }
+    &:last-child {
+        margin-right: 0px;
+    }
+    span {
+        font-size: 18px;
+        color: $color_text;
+        font-weight: 600;
+    }
+    input {
+        height: 40px;
+        border: 2px solid rgba($color: $color_text, $alpha: .3);
+        border-radius: 3px;
+        padding:10px;
+        box-sizing: border-box;
+        color: $color_text;
+        &:focus {
+            border: 2px solid rgba($color: $color_blue, $alpha: .8);
+        }
+    }
+}
+
+.form-default.content-page {
+    width: 100%;
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+    button[type="submit"] {
+        background-color: $color_yellow;
+        height: 45px;
+        box-sizing: border-box;
+        padding: 5px 30px;
+        border-radius: 100px;
+        text-align: center;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 600;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+        color: $color_text;
+        margin-top: 20px;
+        cursor: pointer;
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+}

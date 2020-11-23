@@ -1,2 +1,220 @@
 @import './Mixin.scss';
 
+.table-default {
+    background-color: #FFF;
+    border-collapse: unset;
+    border-spacing: 0px;
+    color: $color_text;
+    width: 100%;
+    tr {
+        th {
+            text-align: left;
+            padding: 15px;
+            padding-top: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid rgba($color: #000000, $alpha: .1);
+            padding-right: 0px;
+            input {
+                font-weight: 600;
+            }
+        }
+        td {
+            padding: 10px 15px;
+            font-size: 13px;
+            border-bottom: 1px solid rgba($color: #000000, $alpha: .1);
+        }
+        &:hover {
+            td {
+                background-color: rgba($color: #000000, $alpha: .01);
+            }
+        }
+        &:last-child {
+            td {
+                &:first-child {
+                    
+                }
+                &:last-child {
+                    
+                }
+            }
+        }
+    }
+}
+
+.button-zig {
+    white-space: nowrap;
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    color: rgba(#000, .8);
+    transition: all .2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    .icon-button {
+        min-width: 20px;
+        svg {
+            font-size: 20px;
+        }
+    }
+    span {
+
+    }
+    &.neutral {
+        background-color: $color_text;
+        color: #FFF;
+        &:hover {
+            background-color: $color_text;
+        }
+    }
+    &.primary {
+        background-color: $color_yellow;
+        color: $color_text;
+        &:hover {
+            background-color: $color_yellow;
+        }
+    }
+    &.secondary {
+        background-color: $color_blue;
+        color: #FFF;
+        &:hover {
+            background-color: $color_blue;
+        }
+    }
+    &.danger {
+        background-color: $color_red;
+        color: rgba(#000, .7);
+        &:hover {
+            background-color: $color_red;
+        }
+    }
+    &:after {
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: rgba(#FFF, .3);
+        transform: translate(-50%, -50%);
+        border-radius: 100px;
+        content: "";
+        transition: all .5s;
+    }
+    &:hover {
+        &:after {
+            width: 400px;
+            height: 400px;
+        }
+    }
+    span, svg {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+#box-phone {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: linear-gradient(to right, rgba(#FFF, .4), rgba(#FFF, .9), rgba(#FFF, 1));
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > button {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        margin: 30px;
+        cursor: pointer;
+    }
+    .modal {
+        display: flex;
+        align-items: center;
+        animation-name: zoomIn;
+        animation-duration: .5s;
+        width: 305px;
+        .phone {
+            min-width: 305px;
+            width: 305px;
+            height: 570px;
+            background: url(../Images/mobile_frame.png);
+            box-sizing: border-box;
+            padding: 31px 16px 31px 11px;
+            position: relative;
+            z-index: 9999;
+            iframe {
+                width: 100%;
+                height: 100%;
+                border-radius: 0px;
+                background-color: #FFF;
+            }
+        }
+        h3 {
+            animation-name: backInRight;
+            animation-duration: 1s;
+            font-size: 45px;
+            line-height: 35px;
+            font-weight: lighter;
+            margin-left: 20px;
+        }
+        a {
+            animation-name: fadeInLeft;
+            color: $color_blue;
+            animation-duration: 1s;
+            animation-delay: .5s;
+            font-size: 25px;
+            line-height: 35px;
+            font-weight: 600;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            &:after {
+                width: 100%;
+                height: 4px;
+                margin-top: 10px;
+                background-color: $color_yellow;
+                content:'';
+            }
+            &:hover {
+                &:after {
+                    background-color: $color_blue;
+                }
+            }
+        }
+    }
+}
+
+.input-default {
+    height: 44px;
+    width: 100%;
+    border-radius: 3px;
+    border: 2px solid #8999a3;
+    padding: 0px 15px;
+    box-sizing: border-box;
+    color: $color_text;
+    &:focus {
+        border: 2px solid $color_blue;
+    }
+}
+
+.swal-overlay {
+    z-index: 99999999;
+    .swal-button--confirm {
+        background-color: $color_blue;
+    }
+    .swal-icon--success__line--long,
+    .swal-icon--success__line {
+        background-color: $color_blue;
+    }
+    .swal-icon--success__ring {
+        border: 4px solid $color_blue;
+    }
+}

@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import br from 'date-fns/locale/pt-BR';
 
 //scss
 import './Campanhas.scss'
+import PreviewTemplate from '../../Components/TemplateCreation/PreviewTemplate/PreviewTemplate';
+import H1Page from '../../Components/Layout/H1Page';
+import { api } from '../../Api/app';
+import datesFormater from '../../Helper/DatesFormater';
 
 export default function Campanhas(props) {
 
@@ -15,91 +19,65 @@ export default function Campanhas(props) {
     const [accordion, setAccordion] = useState(0)
 
     //campanhas
-    const data = [{},{},{},{},{}]
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+
+        api.get('campaigns').then( response => {
+
+            setData( response.data.docs )
+
+        })
+
+    }, [])
 
     return(
-        <div className="page">
+        <div id="campanhas" className="page">
 
-            <h1>Minhas Campanhas</h1>
+            <H1Page nome="Minhas campanhas"/>
             
-            <p>Filtrar por:</p>
-            <div className="filter">
-
-                <label className="date">
-                    <DatePicker
-                        selected={dataInicial}
-                        startDate={dataInicial}
-                        endDate={dataFinal}
-                        locale={br}
-                        dateFormat="dd/MM/Y"
-                        placeholderText="Data Inicial"
-                    />
-                    <i></i>
-                </label>
-
-                <label className="date">
-                    <DatePicker
-                        selected={dataFinal}
-                        selectsEnd
-                        startDate={dataInicial}
-                        endDate={dataFinal}
-                        minDate={dataInicial}
-                        locale={br}
-                        dateFormat="dd/MM/Y"
-                        placeholderText="Data Final"
-                    />
-                    <i></i>
-                </label>
-
-                <label>
-                    <select>
-                        <option>Tipo de Envio</option>
-                    </select>
-                </label>
-
-                <label>
-                    <select>
-                        <option>Status</option>
-                    </select>
-                </label>
-
-                <label>
-                    <input placeholder="Buscar por nome" />
-                </label>
-
-                <button className="btn">Filtrar</button>
-
-            </div>
-
             <div className="accordion">
                 
-                {data.map((e, i) => (
-                <div key={i} className={`item ${accordion === i ? 'active' : null}`}>
+                {data.map((row, key) => (
+                <div key={key} className={`item ${accordion >= key ? 'up' : 'down'} ${accordion === key ? 'active' : null}`}>
                     
-                    <div className="title" onClick={() => setAccordion(i)}>Nome da Campanha 0{i+1}</div>
+                    <div className="title" onClick={() => setAccordion(key)}>
+                        <span>{row.nome}</span>
+                        <button>
+                            { accordion === key ? '-' : '+' }
+                        </button>
+                    </div>
+                    <div className="infos">
 
-                    <div className="content row">
-                        <div className="col">
-                            <p>Período da Campanha</p>
-                            <small>28/10/2019 a 28/03/2020</small>
-                        </div>
-
-                        <div className="col">
-                            <p>Link do Template</p>
-                            <small>Meu Template 001</small>
-                        </div>
-                        
-                        <div className="col">
-                            <p>Método</p>
-                            <small>Enviar Agora</small>
-                        </div>
-                        
-                        <div className="col">
-                            <p>Status</p>
-                            <small>Enviado</small>
+                        <div>
+                            <b>Período da campanha</b>
+                            <span>
+                                <i className="fa fa-calendar"></i>
+                                {datesFormater.dateBR(row.periodoInicial)} a {datesFormater.dateBR(row.periodoFinal)}
+                            </span>
                         </div>
 
-                        <button class="btn">Ver Relatórios</button>
+                        { row.templateId &&
+                        <div>
+                            <b>Link do template</b>
+                            <PreviewTemplate id={row.templateId}>
+                                <span className="link">
+                                    <i class="fa fa-external-link" aria-hidden="true"></i> 
+                                    Visualizar
+                                </span>
+                            </PreviewTemplate>
+                        </div>
+                        }
+
+                        <div>
+                            <b>Tipo</b>
+                            <span>{row.send}</span>
+                        </div>
+
+                        <div>
+                            <b>Relatório</b>
+                            <span>Indisponivel</span>
+                        </div>
 
                     </div>
 

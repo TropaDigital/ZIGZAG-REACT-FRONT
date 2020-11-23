@@ -1,25 +1,46 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { api } from '../../Api/app'
 
 //scss
 import './Login.scss'
 //images
 import Logo from '../../Images/logo_color.png'
+import messageStore from '../../Store/MessageStore'
 
 export default function Login(props) {
     
     const history = useHistory()
 
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
+
     useEffect(() => {
 
     }, [props]);
 
-    function handleLogin(e){
+    async function handleLogin(e){
 
         e.preventDefault()
 
-        window.localStorage.setItem('token', 'true')
-        history.push('/')
+        try {
+
+            var response = await api.post('session/login', { login, password })
+        
+            if ( response.data.error === true ){
+
+                throw response.data.message
+
+            }
+
+            window.localStorage.setItem('token', response.data.token)
+            window.location.href="/"
+
+        } catch ( e ) {
+
+            messageStore.addError(e)
+
+        }
 
     }
 
@@ -39,11 +60,11 @@ export default function Login(props) {
                     <form onSubmit={handleLogin}>
 
                         <label>
-                            <input autoFocus={'true'} placeholder="usuário"/>
+                            <input autoFocus={'true'} placeholder="usuário" onChange={(e) => setLogin(e.target.value)}/>
                             <i className="email"></i>
                         </label>
                         <label>
-                            <input placeholder="senha" type="password"/>
+                            <input placeholder="senha" type="password" onChange={(e) => setPassword(e.target.value)}/>
                             <i className="password"></i>
                         </label>
 
@@ -56,8 +77,8 @@ export default function Login(props) {
                     </form>
 
                 </div>
-                <div className="right animate__animated"></div>
 
+                <div className="right animate__animated"></div>
 
             </div>
 
